@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  authurl:`https://auth-git-main-iamrkjs-projects.vercel.app/api/auth`
 };
 
 /*

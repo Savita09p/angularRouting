@@ -1,0 +1,23 @@
+<!-- <p>user works!</p> -->
+
+<div class="row ">
+    <div class="col-md-6" *ngIf="userId ; else noUser">
+       <div class="card">
+        <div class="card-header">
+            <h2>{{userObj.userName}}</h2>
+        </div>
+        <div class="card-body">
+            The User Having UserRole {{userObj.userRole}}
+        </div>
+        <div class="card-footer">
+            <button routerLink="edit" class="btn btn-sm btn-outline-info mr-3">Edit</button>
+            <button (click)="onRemoveUser()" class="btn btn-sm btn-outline-danger">Remove</button>
+        </div>
+       </div>
+    </div>
+    <ng-template #noUser>
+        <p class="alert alert-info">
+            No User Data Available !!!
+        </p>
+    </ng-template>
+</div>

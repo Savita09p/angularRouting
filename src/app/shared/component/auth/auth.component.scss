@@ -1,0 +1,40 @@
+
+main.main{
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: olive;
+    .card{
+      width:500px;
+      max-width: 100%;
+    }
+}
+.authMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    padding: 15px;
+    min-height: 100vh;
+}
+.authcard{
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+}
+
+.fullwidth{
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.text-center{
+    text-align: center;
+}

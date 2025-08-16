@@ -1,0 +1,23 @@
+<!-- <p>users works!</p> -->
+ <div class="row">
+    <div class="col-12 text-right mt-5">
+        <button routerLink="addUser" class="btn btn-sm btn-outline-info mr-4">Add User</button>
+    </div>
+</div>
+
+<div class="row mt-4 ml-4">
+    <div class="col-md-4">
+        <ul class="list-group users">
+            <li class="list-group-item" 
+            [routerLinkActive]="'active'"
+            routerLink="{{user.userId}}"
+            [queryParams]="{userRole : user.userRole}"
+            *ngFor="let user of usersArr">
+            {{user.userName}} {{user.userId}}
+           </li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+</div>
