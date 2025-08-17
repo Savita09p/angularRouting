@@ -19,7 +19,7 @@ export class CandeactivateGuard implements CanDeactivate<IcanDeactivate> {
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // return true;
-    return component.canDeactive();
+    // return component.canDeactive();
     if(this._authService.getToken()){
       return true
     }else{
@@ -27,4 +27,5 @@ export class CandeactivateGuard implements CanDeactivate<IcanDeactivate> {
       return this._route.createUrlTree([''])
     }
   }
+  
 }

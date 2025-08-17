@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserRoleGuard implements CanActivate {
+  
   private _route =inject(ActivatedRoute)
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -15,6 +16,5 @@ export class UserRoleGuard implements CanActivate {
     let arrOfUserRoles : Array<string> = route.data['userRole']
     return arrOfUserRoles.includes(logInUser)
   }
-  
   
 }

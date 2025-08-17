@@ -11,6 +11,7 @@ import { Iuser } from '../model/users';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SingleUserResolver implements Resolve<Iuser> {
   private _userService = inject(UserService)
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Iuser |Observable<Iuser> {

@@ -8,6 +8,7 @@ import { SnackBarService } from '../services/snack-bar.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+  
   private _authService =inject(AuthService)
   private _router=inject(Router)
   private _snackbar=inject(SnackBarService)
@@ -22,6 +23,5 @@ export class AuthGuard implements CanActivate {
       return this._router.createUrlTree([''])
     }
   }
-  
   
 }

@@ -13,7 +13,6 @@ export class AuthComponent implements OnInit {
   logInForm !: FormGroup;
   SignUpForm !: FormGroup;
   allReadyHasAccount : boolean= true;
-// LogInForm: FormGroup<any>;
   constructor(
     private _authService : AuthService,
     private _snackBarService : SnackBarService,
@@ -44,12 +43,12 @@ export class AuthComponent implements OnInit {
   onLogIn(){
     if(this.logInForm.valid){
       let user = this.logInForm.value;
-      this._authService.LogIn(user)
+      this._authService.logIn(user)
        .subscribe({
         next :(res) =>{
           console.log(res)
           this._snackBarService.openSnackBar(res.message)
-          this._authService.savetoken(res.token)
+          this._authService.saveToken(res.token)
           //this._authService.saveUserRole(res.userRole)
           this.logInForm.reset();
           this._route.navigate(['home'])
@@ -67,15 +66,15 @@ export class AuthComponent implements OnInit {
    if(this.SignUpForm.valid){
     let user = this.SignUpForm.value;
     this.SignUpForm.reset();
-    this._authService.registration(user)
+    this._authService.register(user)
     .subscribe({
-      next :(res : any) =>{
+      next :(res) =>{
         this._snackBarService.openSnackBar(res.message)
-        this._authService.savetoken(res.token),
+        this._authService.saveToken(res.token),
         this.SignUpForm.reset(),
         this.allReadyHasAccount=true
     },
-    error :(err : any) =>{
+    error :(err) =>{
       this._snackBarService.openSnackBar(err.error.message)
     }
     })

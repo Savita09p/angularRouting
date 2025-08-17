@@ -1,53 +1,47 @@
 <!-- <p>auth works!</p> -->
- <main class="authMain">
-    <mat-card class="authCard">
-        <mat-card-header>
-            <mat-card-title>{{allReadyHasAccount ? 'Log In' : 'Sign Up'}}</mat-card-title>
-        </mat-card-header>
-  <mat-card-content>  
- <!-- sign Up -->
- <ng-container *ngIf="!allReadyHasAccount">
-   <form [formGroup]="SignUpForm" (ngSubmit)="onRegister()">
-      <mat-form-field appearance="outline" class="fullwidth">
-         <mat-label>Email</mat-label>
-         <input matInput formControlName="email">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="fullwidth">
-         <mat-label>PassWord</mat-label>
-         <input matInput formControlName="password">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="fullwidth">
-        <mat-label>User-Role</mat-label>
-        <mat-select formControlName="userRole">
-            <mat-option value="admin">Admin</mat-option>
-            <mat-option value="buyer">Buyer</mat-option>
-            <mat-option value="super-admin">Super-Admin</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-raised-button color="primary" class="fullwidth">Sign-Up</button>
-   </form>
- </ng-container>
-
- <!-- Log In -->
-  <ng-container *ngIf="allReadyHasAccount">
-   <form [formGroup]="logInForm" (ngSubmit)="onLogIn()">
-      <mat-form-field appearance="outline" class="fullwidth">
-         <mat-label>Email</mat-label>
-         <input matInput formControlName="email">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="fullwidth">
-         <mat-label>PassWord</mat-label>
-         <input matInput formControlName="password">
-      </mat-form-field>
-      <button mat-raised-button color="accent" class="fullwidth">Log-In</button>
-   </form>
-  </ng-container>
-
-  <div class="text-center mt-2">
-    <a href="javascript:;" (click)="allReadyHasAccount=!allReadyHasAccount">
-        {{allReadyHasAccount ? 'I Do not have an Account' :'I Already have an Account'}}
-    </a>
-  </div>
-  </mat-card-content>
-  </mat-card>
- </main>
+ <div class="main">
+    <div class="card p-5">
+        <div clas="card-body">
+            <h2>{{ allReadyHasAccount ? 'LogIn' : 'SignUp'}}</h2>
+            <ng-container *ngIf="allReadyHasAccount">
+                <form [formGroup]="logInForm" (ngSubmit)="onLogIn()">
+                    <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" formControlName="email" id="email" class="form-control">
+                    </div>
+                     <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" formControlName="password" id="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary">Log In</button>
+                </form> 
+            </ng-container>
+             <ng-container *ngIf="!allReadyHasAccount">
+                <form [formGroup]="SignUpForm" (ngSubmit)="onRegister()">
+                    <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" formControlName="email" id="email" class="form-control">
+                    </div>
+                     <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" formControlName="password" id="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">UserRole</label>
+                        <select type="text" id="userRole" formControlName="userRole" class="form-control">
+                            <option value="buyer">Buyer</option>
+                            <option value="admin">Admin</option>
+                            <option value="superAdmin">SuperAdmin</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+                </form> 
+            </ng-container>
+            <p class="mt-2">
+                <a class="btn btn-link" href="javascript:;" (click)="allReadyHasAccount = !allReadyHasAccount" >
+                    {{allReadyHasAccount ? 'Dont Have Account' : 'Already have account'}}
+                </a>
+            </p>
+        </div>
+    </div>
+</div>

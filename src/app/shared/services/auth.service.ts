@@ -1,48 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Iregistraton } from '../model/user';
+import { ILogInUser, Iregistraton } from '../model/user';
 import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  BASE_AUTHURL : string = environment.authurl;
-  LogInSub$ : Subject<boolean> = new Subject();
+  registration(user: any) {
+    throw new Error('Method not implemented.');
+  }
+  AUTH_URL : string =`${environment.authurl}`;
+
   constructor(
-    private _http : HttpClient
+    private _http : HttpClient,
+    private _router :Router
   ) { }
 
-  LogIn(loginObj : Iregistraton) : Observable<any>{
-    return this._http.post<any>(`${this.BASE_AUTHURL}/login` , loginObj)
+  register(userDetails : Iregistraton) : Observable<any>{
+    return this._http.post(`${this.AUTH_URL}/api/auth/register`, userDetails);
+
   }
 
-  getToken(){
-    return localStorage.getItem('token');
+  logIn(userDetails : ILogInUser) : Observable<any>{
+    let LOGIN_URL =`${this.AUTH_URL}/api/auth/login`
+    return this._http.post<any>(LOGIN_URL,userDetails)
   }
 
-  savetoken(token : string){
-    return localStorage.setItem('token',token)
+  saveToken(token : string){
+    localStorage.setItem('token', token)
   }
 
-  removetoken(){
-    localStorage.removeItem('token');
-  }
-
-  registration(regObj : Iregistraton) : Observable<any>{
-    return this._http.post<any>(`${this.BASE_AUTHURL}/register`,regObj)
-  }
-
-  getUserRole(){
-    return localStorage.getItem('userRole')
-  }
-
-  saveUserRole(userRole : string){
-    return localStorage.setItem('userRole',userRole)
-  }
-
-  removeUserRole(){
-    localStorage.removeItem('userRole')
+  getToken() : string | null{
+    return localStorage.getItem('token')
   }
 }

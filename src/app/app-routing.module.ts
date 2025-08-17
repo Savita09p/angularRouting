@@ -13,12 +13,17 @@ import { UserResolver } from './shared/resolver/user.resolver';
 import { SingleUserResolver } from './shared/resolver/singleuser.resolver';
 import { CandeactivateGuard } from './shared/gaurds/can-deactivate.guard';
 
-const routes: Routes =  [
+
+  const routes: Routes = [
   {
     path:'',
     component:AuthComponent
   },
- 
+  {
+    path:'',
+    redirectTo:'home',
+    pathMatch:'full',
+  },
   {
     path:'home',
     component:HomeComponent,
@@ -77,4 +82,4 @@ const routes: Routes =  [
 })
 export class AppRoutingModule { }
 
-  
+ 

@@ -1,23 +1,26 @@
 <!-- <p>user works!</p> -->
-
-<div class="row ">
-    <div class="col-md-6" *ngIf="userId ; else noUser">
+<div class="row mt-0">
+    <div class="col-10" *ngIf="userId; else noUser">
        <div class="card">
         <div class="card-header">
             <h2>{{userObj.userName}}</h2>
         </div>
         <div class="card-body">
-            The User Having UserRole {{userObj.userRole}}
+            The User is having userRole {{userObj.userRole}}
         </div>
         <div class="card-footer">
-            <button routerLink="edit" class="btn btn-sm btn-outline-info mr-3">Edit</button>
-            <button (click)="onRemoveUser()" class="btn btn-sm btn-outline-danger">Remove</button>
+            <button 
+            routerLink="edit"
+            class="btn btn-outline-primary btn-sm mr-3">Edit</button>
+            <button 
+            (click)="onRemoveUser()"
+            class="btn btn-outline-danger btn-sm">Remove</button>
         </div>
        </div>
     </div>
     <ng-template #noUser>
         <p class="alert alert-info">
-            No User Data Available !!!
+          No Products Yet Added!!!...
         </p>
     </ng-template>
 </div>
